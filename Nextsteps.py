@@ -25,7 +25,36 @@ for symbol, symbol_data in tradable_symbols.items():
     if direction and probability > threshold:
         insights.append(Insight.Price(symbol, data.Time + timedelta(days=1, seconds=-1), 
                                       direction, None, None, None, weight))
-#However, due to the limited time working on this, the algorithm provide a bad result of investment when lost around 80% of the initial captital
+
+#Inside the `GaussianNaiveBayesAlphaModel` class in the `alpha.py` file, locate the `train` method. Add the following code snippet to perform feature scaling before training the Gaussian Naive Bayes classifier:
+
+
+from sklearn.preprocessing import StandardScaler
+
+
+def train(self):
+    """
+    Trains the Gaussian Naive Bayes classifier model.
+    """
+    features = pd.DataFrame()
+    labels_by_symbol = {}
+
+    for symbol, symbol_data in self.symbol_data_by_symbol.items():
+        if symbol_data.IsReady:
+            features = pd.concat([features, symbol_data.features_by_day], axis=1)
+            labels_by_symbol[symbol] = symbol_data.labels_by_day
+
+    scaler = StandardScaler()
+    scaled_features = scaler.fit_transform(features.iloc[:-2])
+
+    for symbol, symbol_data in self.symbol_data_by_symbol.items():
+        if symbol_data.IsReady:
+            symbol_data.model = GaussianNB().fit(scaled_features, labels_by_symbol[symbol])
+
+
+#This code snippet imports the `StandardScaler` from scikit-learn, creates an instance of `StandardScaler`, and applies feature scaling using the `fit_transform` method. The scaled features are then used to train the Gaussian Naive Bayes classifier model.
+#By applying feature scaling, the algorithm can handle features with different scales and improve the classifier's performance. This replace the existing `train` method in `alpha.py` file with the updated code.
+#However, due to the limited time spent on this part, the algorithm's performance in terms of investment results was suboptimal. It resulted in a significant loss of approximately 80% of the initial capital. 
 
 #**main.py: GaussianNaiveBayesClassificationAlgorithm**
 
