@@ -40,12 +40,9 @@ The next steps include further refining the Gaussian Naive Bayes model by explor
 
 Additionally, risk management strategies will be incorporated into the trading system to effectively manage risk and protect against potential losses. Extensive backtesting and simulation will be conducted using historical data to validate the system's performance over different market conditions and evaluate its potential profitability.
 
-7. Code and Repository
-The code for the basic AI trading system using decision trees can be found in the project's GitHub repository: link-to-repository
+7. Code and Repository: Please note that the repository does not include the data or additional libraries to ensure a manageable file size. link to the platform on QuantConnect: https://www.quantconnect.com/project/15206129 
 
-Please note that the repository does not include the data or additional libraries to ensure a manageable file size.
-
-8. Conclusion
+9. Conclusion
 In conclusion, this project aimed to develop a basic AI trading system using Gaussian Naive Bayes classification. The utilization of Gaussian Naive Bayes demonstrates the application of AI techniques in making trading decisions. The preliminary experiments conducted on the QuantConnect platform provide initial insights into the performance of the model.
 
 The project contributes to the field of AI-related applications in finance by showcasing the use of Gaussian Naive Bayes for trading system development. The evaluation process and planned enhancements will provide valuable insights into the potential of Gaussian Naive Bayes and AI techniques for improving trading strategies.
