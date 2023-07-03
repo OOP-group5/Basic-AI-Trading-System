@@ -1,1 +1,3 @@
-
+Basic AI trading system using Gaussian Naive Bayes classification. 
+The project explores the application of AI techniques in the financial markets to make informed trading decisions.
+link to the QuantConnect project: https://www.quantconnect.com/project/15206129 
